@@ -621,10 +621,24 @@ class SkeletonState(Serializable):
             ]
         )
 
-    def to_retarget_motion_file(self, path: str) -> None:
+    def to_retarget_motion_file(self, path: str, debug: bool = False) -> None:
         """
         Save the motion for the retargeting.
         """
+        raw_positions = self.global_translation.detach().cpu().numpy()
+        raw_quaternions = self.global_rotation.detach().cpu().numpy()
+        joint_names = self.skeleton_tree.node_names
+
+        if debug:
+            hips_idx = joint_names.index("Hips") if "Hips" in joint_names else 0
+            print(f"\n=== DEBUG to_retarget_motion_file (frame 0) ===")
+            print(f"Joint names: {list(joint_names)}")
+            print(f"Raw Hips position (frame 0): {raw_positions[0, hips_idx]}")
+            print(f"Raw Hips quaternion (frame 0): {raw_quaternions[0, hips_idx]}")
+            print(f"global_translation range: min={raw_positions.min():.3f}, max={raw_positions.max():.3f}")
+            print(f"global_rotation range: min={raw_quaternions.min():.3f}, max={raw_quaternions.max():.3f}")
+            print(f"===============================================\n")
+
         global_positions = quat_rotate(
             torch.tensor([0.70711, 0, 0, 0.70711]),
             self.global_translation
@@ -632,7 +646,13 @@ class SkeletonState(Serializable):
         global_quaternions = quat_mul_norm(
             torch.tensor([0.70711, 0, 0, 0.70711]), self.global_rotation
         ).detach().cpu().numpy() # y-up -> z-up
-        joint_names = self.skeleton_tree.node_names
+
+        if debug:
+            print(f"=== After y-up -> z-up transform ===")
+            print(f"Hips position (frame 0): {global_positions[0, hips_idx]}")
+            print(f"Hips quaternion (frame 0): {global_quaternions[0, hips_idx]}")
+            print(f"position range: min={global_positions.min():.3f}, max={global_positions.max():.3f}")
+            print(f"=====================================\n")
 
         num_frames = global_positions.shape[0]
         num_joints = len(joint_names)

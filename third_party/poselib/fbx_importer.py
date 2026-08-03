@@ -36,7 +36,7 @@ def main():
     )
     
     # Save motion in the specified format
-    motion.to_retarget_motion_file(args.output)
+    motion.to_retarget_motion_file(args.output, debug=True)
     print(f"Successfully converted '{args.input}' to '{args.output}'")
 
 if __name__ == "__main__":
