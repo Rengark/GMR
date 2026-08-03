@@ -641,7 +641,8 @@ class SkeletonState(Serializable):
         for frame in range(num_frames):
             motion = {}
             for i in range(num_joints):
-                motion[joint_names[i].split('_')[1]] = [
+                parts = joint_names[i].split('_')
+                motion[parts[1] if len(parts) > 1 else parts[0]] = [
                     global_positions[frame, i].tolist(),
                     global_quaternions[frame, i, [3, 0, 1, 2]].tolist()
                 ]
