@@ -652,6 +652,13 @@ class SkeletonState(Serializable):
             print(f"Hips position (frame 0): {global_positions[0, hips_idx]}")
             print(f"Hips quaternion (frame 0): {global_quaternions[0, hips_idx]}")
             print(f"position range: min={global_positions.min():.3f}, max={global_positions.max():.3f}")
+            print(f"=== T-pose joint quaternions (frame 0, xyzw order) ===")
+            for name in ["LeftArm", "RightArm", "LeftForeArm", "RightForeArm", "LeftHand", "RightHand",
+                         "LeftThigh", "RightThigh", "LeftShin", "RightShin"]:
+                if name in joint_names:
+                    idx = joint_names.index(name)
+                    q = global_quaternions[0, idx, [3, 0, 1, 2]]  # xyzw -> wxyz
+                    print(f"  {name}: wxyz={q}")
             print(f"=====================================\n")
 
         num_frames = global_positions.shape[0]
