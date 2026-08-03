@@ -8,12 +8,13 @@
     "human_scale_table": {
         "Hips": 0.9,
         "Spine1": 0.9,
-        "LeftThigh": 0.9,
-        "RightThigh": 0.9,
-        "LeftShin": 0.9,
-        "RightShin": 0.9,
-        "LeftToe": 0.9,
-        "RightToe": 0.9,
+        "LeftUpLeg": 0.9,
+        "RightUpLeg": 0.9,
+        "LeftLeg": 0.9,
+        "RightLeg": 0.9,
+        "LeftToeBase": 0.9,
+        "RightToeBase": 0.9,
+
         "LeftArm": 0.8,
         "RightArm": 0.8,
         "LeftForeArm": 0.8,
@@ -27,45 +28,45 @@
             0,
             10,
             [0.0, 0.0, 0.0],
-            [0.5, -0.5, -0.5, -0.5]
+            [0.70710678, 0.0, 0.0, -0.70710678]
         ],
         "left_hip_roll_link": [
-            "LeftThigh",
+            "LeftUpLeg",
             0,
             10,
             [0.0, 0.0, 0.0],
             [0.5, -0.5, 0.5, 0.5]
         ],
         "left_knee_link": [
-            "LeftShin",
+            "LeftLeg",
             0,
             10,
             [0.0, 0.0, 0.0],
             [0.5, -0.5, 0.5, 0.5]
         ],
         "left_toe_link": [
-            "LeftToe",
+            "LeftToeBase",
             100,
             50,
             [0.0, 0.0, 0.0],
             [0.5, -0.5, 0.5, 0.5]
         ],
         "right_hip_roll_link": [
-            "RightThigh",
+            "RightUpLeg",
             0,
             10,
             [0.0, 0.0, 0.0],
             [0.5, -0.5, -0.5, -0.5]
         ],
         "right_knee_link": [
-            "RightShin",
+            "RightLeg",
             0,
             10,
             [0.0, 0.0, 0.0],
             [0.5, -0.5, -0.5, -0.5]
         ],
         "right_toe_link": [
-            "RightToe",
+            "RightToeBase",
             100,
             50,
             [0.0, 0.0, 0.0],
@@ -76,7 +77,7 @@
             0,
             10,
             [0.0, 0.0, 0.0],
-            [0.5, -0.5, -0.5, -0.5]
+            [0.70710678, 0.0, 0.0, -0.70710678]
         ],
         "left_shoulder_yaw_link": [
             "LeftArm",
@@ -127,45 +128,45 @@
             10,
             5,
             [0.0, 0.0, 0.0],
-            [0.5, -0.5, -0.5, -0.5]
+            [0.70710678, 0.0, 0.0, -0.70710678]
         ],
         "left_hip_roll_link": [
-            "LeftThigh",
+            "LeftUpLeg",
             10,
             5,
             [0.0, 0.0, 0.0],
             [0.5, -0.5, 0.5, 0.5]
         ],
         "left_knee_link": [
-            "LeftShin",
+            "LeftLeg",
             10,
             5,
             [0.0, 0.0, 0.0],
             [0.5, -0.5, 0.5, 0.5]
         ],
         "left_toe_link": [
-            "LeftToe",
+            "LeftToeBase",
             100,
             50,
             [0.0, 0.0, 0.0],
             [0.5, -0.5, 0.5, 0.5]
         ],
         "right_hip_roll_link": [
-            "RightThigh",
+            "RightUpLeg",
             10,
             5,
             [0.0, 0.0, 0.0],
             [0.5, -0.5, -0.5, -0.5]
         ],
         "right_knee_link": [
-            "RightShin",
+            "RightLeg",
             10,
             5,
             [0.0, 0.0, 0.0],
             [0.5, -0.5, -0.5, -0.5]
         ],
         "right_toe_link": [
-            "RightToe",
+            "RightToeBase",
             100,
             50,
             [0.0, 0.0, 0.0],

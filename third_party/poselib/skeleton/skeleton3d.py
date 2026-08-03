@@ -621,9 +621,10 @@ class SkeletonState(Serializable):
             ]
         )
 
-    def to_retarget_motion_file(self, path: str, debug: bool = False) -> None:
+    def to_retarget_motion_file(self, path: str, debug: bool = False, z_up: bool = False) -> None:
         """
         Save the motion for the retargeting.
+        Set z_up=True if the FBX is already in Z-up coordinates (e.g. Blender Z-up export).
         """
         raw_positions = self.global_translation.detach().cpu().numpy()
         raw_quaternions = self.global_rotation.detach().cpu().numpy()
@@ -639,13 +640,17 @@ class SkeletonState(Serializable):
             print(f"global_rotation range: min={raw_quaternions.min():.3f}, max={raw_quaternions.max():.3f}")
             print(f"===============================================\n")
 
-        global_positions = quat_rotate(
-            torch.tensor([0.70711, 0, 0, 0.70711]),
-            self.global_translation
-        ).detach().cpu().numpy() / 100 # cm -> m
-        global_quaternions = quat_mul_norm(
-            torch.tensor([0.70711, 0, 0, 0.70711]), self.global_rotation
-        ).detach().cpu().numpy() # y-up -> z-up
+        if z_up:
+            global_positions = self.global_translation.detach().cpu().numpy() / 100  # cm -> m
+            global_quaternions = self.global_rotation.detach().cpu().numpy()
+        else:
+            global_positions = quat_rotate(
+                torch.tensor([0.70711, 0, 0, 0.70711]),
+                self.global_translation
+            ).detach().cpu().numpy() / 100  # cm -> m, y-up -> z-up
+            global_quaternions = quat_mul_norm(
+                torch.tensor([0.70711, 0, 0, 0.70711]), self.global_rotation
+            ).detach().cpu().numpy()
 
         if debug:
             print(f"=== After y-up -> z-up transform ===")
