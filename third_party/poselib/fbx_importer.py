@@ -16,6 +16,7 @@ def main():
     parser.add_argument('--root-joint', '-r', default='Hips', help='Root joint name (default: Hips)')
     parser.add_argument('--fps', '-f', type=int, default=120, help='FPS for the motion (default: 120)')
     parser.add_argument('--z_up', action='store_true', help='Input FBX is already Z-up (skip y-up to z-up conversion)')
+    parser.add_argument('--yaw', type=float, default=0.0, help='Yaw rotation in degrees to apply around Z axis (e.g. -90 to fix facing direction)')
     
     args = parser.parse_args()
     
@@ -37,7 +38,7 @@ def main():
     )
     
     # Save motion in the specified format
-    motion.to_retarget_motion_file(args.output, debug=True, z_up=args.z_up)
+    motion.to_retarget_motion_file(args.output, debug=True, z_up=args.z_up, yaw_deg=args.yaw)
     print(f"Successfully converted '{args.input}' to '{args.output}'")
 
 if __name__ == "__main__":

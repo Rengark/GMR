@@ -621,10 +621,11 @@ class SkeletonState(Serializable):
             ]
         )
 
-    def to_retarget_motion_file(self, path: str, debug: bool = False, z_up: bool = False) -> None:
+    def to_retarget_motion_file(self, path: str, debug: bool = False, z_up: bool = False, yaw_deg: float = 0.0) -> None:
         """
         Save the motion for the retargeting.
         Set z_up=True if the FBX is already in Z-up coordinates (e.g. Blender Z-up export).
+        yaw_deg rotates the entire motion around Z to correct facing direction.
         """
         raw_positions = self.global_translation.detach().cpu().numpy()
         raw_quaternions = self.global_rotation.detach().cpu().numpy()
@@ -652,6 +653,13 @@ class SkeletonState(Serializable):
                 torch.tensor([0.70711, 0, 0, 0.70711]), self.global_rotation
             ).detach().cpu().numpy()
 
+        if yaw_deg != 0.0:
+            import math
+            half = math.radians(yaw_deg) / 2.0
+            yaw_q = torch.tensor([0.0, 0.0, math.sin(half), math.cos(half)])  # xyzw, Z-axis rotation
+            global_positions = quat_rotate(yaw_q, torch.tensor(global_positions)).numpy()
+            global_quaternions = quat_mul_norm(yaw_q, torch.tensor(global_quaternions)).numpy()
+
         if debug:
             print(f"=== After y-up -> z-up transform ===")
             print(f"Hips position (frame 0): {global_positions[0, hips_idx]}")
@@ -673,8 +681,7 @@ class SkeletonState(Serializable):
         for frame in range(num_frames):
             motion = {}
             for i in range(num_joints):
-                parts = joint_names[i].split('_')
-                motion[parts[1] if len(parts) > 1 else parts[0]] = [
+                motion[joint_names[i]] = [
                     global_positions[frame, i].tolist(),
                     global_quaternions[frame, i, [3, 0, 1, 2]].tolist()
                 ]
