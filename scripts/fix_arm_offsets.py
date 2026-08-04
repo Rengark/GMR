@@ -14,7 +14,7 @@ from pathlib import Path
 
 IK_CONFIG_PATH = Path(__file__).parent.parent / "general_motion_retargeting" / "ik_configs" / "fbx_to_g1.json"
 
-with open("/Users/FOONG_Jun_Wei/Documents/anim/anim_test.pkl", "rb") as f:
+with open("~/anim/anim/anim_test.pkl", "rb") as f:
     motion = pickle.load(f)
 frame0 = motion[0]
 
