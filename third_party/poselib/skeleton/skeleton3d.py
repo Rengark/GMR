@@ -643,7 +643,12 @@ class SkeletonState(Serializable):
 
         if z_up:
             global_positions = self.global_translation.detach().cpu().numpy() / 100  # cm -> m
-            global_quaternions = self.global_rotation.detach().cpu().numpy()
+            # Positions are already Z-up. Quaternions encode Y-forward (Blender convention)
+            # but the pipeline expects X-forward. Apply -90° around Z to fix facing direction.
+            yaw_fix = torch.tensor([0.0, 0.0, -0.70711, 0.70711])  # xyzw, -90° around Z
+            global_quaternions = quat_mul_norm(
+                yaw_fix, self.global_rotation
+            ).detach().cpu().numpy()
         else:
             global_positions = quat_rotate(
                 torch.tensor([0.70711, 0, 0, 0.70711]),
