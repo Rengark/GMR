@@ -88,7 +88,7 @@ if __name__ == "__main__":
     
     # Initialize the retargeting system with fbx configuration
     retargeter = GMR(
-        src_human="fbx_offline",  # Use the new fbx configuration
+        src_human="fbx",  # Use the fbx configuration
         tgt_robot=args.robot,
         actual_human_height=1.8,
     )
