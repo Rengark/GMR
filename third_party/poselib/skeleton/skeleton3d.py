@@ -644,7 +644,7 @@ class SkeletonState(Serializable):
         if z_up:
             # Positions and rotations are Z-up but -Y forward (Blender convention).
             # Apply -90° around Z to both to convert to X-forward.
-            yaw_fix = torch.tensor([0.0, 0.0, -0.70711, 0.70711])  # xyzw, -90° around Z
+            yaw_fix = torch.tensor([0.0, 0.0, 0.70711, 0.70711])  # xyzw, +90° around Z
             global_positions = quat_rotate(
                 yaw_fix, self.global_translation
             ).detach().cpu().numpy() / 100  # cm -> m
