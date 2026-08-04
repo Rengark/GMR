@@ -169,7 +169,7 @@
         "left_elbow_link": [
             "LeftForeArm",
             0,
-            10,
+            0,
             [
                 0.0,
                 0.0,
@@ -185,7 +185,7 @@
         "left_wrist_yaw_link": [
             "LeftHand",
             0,
-            10,
+            0,
             [
                 0.0,
                 0.0,
@@ -217,7 +217,7 @@
         "right_elbow_link": [
             "RightForeArm",
             0,
-            10,
+            0,
             [
                 0.0,
                 0.0,
@@ -233,7 +233,7 @@
         "right_wrist_yaw_link": [
             "RightHand",
             0,
-            10,
+            0,
             [
                 0.0,
                 0.0,
@@ -395,7 +395,7 @@
         "left_elbow_link": [
             "LeftForeArm",
             0,
-            10,
+            0,
             [
                 0.0,
                 0.0,
@@ -411,7 +411,7 @@
         "left_wrist_yaw_link": [
             "LeftHand",
             0,
-            10,
+            0,
             [
                 0.0,
                 0.0,
@@ -443,7 +443,7 @@
         "right_elbow_link": [
             "RightForeArm",
             0,
-            10,
+            0,
             [
                 0.0,
                 0.0,
@@ -459,7 +459,7 @@
         "right_wrist_yaw_link": [
             "RightHand",
             0,
-            10,
+            0,
             [
                 0.0,
                 0.0,
