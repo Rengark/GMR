@@ -14,12 +14,12 @@
         "RightLeg": 0.9,
         "LeftToeBase": 0.9,
         "RightToeBase": 0.9,
-        "LeftArm": 0.45,
-        "RightArm": 0.45,
-        "LeftForeArm": 0.45,
-        "RightForeArm": 0.45,
-        "LeftHand": 0.45,
-        "RightHand": 0.45
+        "LeftArm": 0.83,
+        "RightArm": 0.83,
+        "LeftForeArm": 0.83,
+        "RightForeArm": 0.83,
+        "LeftHand": 0.83,
+        "RightHand": 0.83
     },
     "ik_match_table1": {
         "pelvis": [
