@@ -21,8 +21,8 @@ frame0 = motion[0]
 # Desired IK target orientations when arms are extended to sides:
 # Left arm along +Y: body x-axis should point +Y -> rotate +90 about Z
 # Right arm along -Y: body x-axis should point -Y -> rotate -90 about Z
-R_left_target = R.from_euler('z', 90, degrees=True)
-R_right_target = R.from_euler('z', -90, degrees=True)
+R_left_target = R.from_euler('z', 0, degrees=True)
+R_right_target = R.from_euler('z', 90, degrees=True)
 
 arm_joints = {
     'left_shoulder_yaw_link': ('LeftArm', R_left_target),
