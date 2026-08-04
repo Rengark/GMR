@@ -14,15 +14,15 @@ from pathlib import Path
 
 IK_CONFIG_PATH = Path(__file__).parent.parent / "general_motion_retargeting" / "ik_configs" / "fbx_to_g1.json"
 
-with open("~/anim/anim/anim_test.pkl", "rb") as f:
+with open("/home/sctd/anim/anim/anim_test.pkl", "rb") as f:
     motion = pickle.load(f)
 frame0 = motion[0]
 
 # Desired IK target orientations when arms are extended to sides:
 # Left arm along +Y: body x-axis should point +Y -> rotate +90 about Z
 # Right arm along -Y: body x-axis should point -Y -> rotate -90 about Z
-R_left_target = R.from_euler('z', 0, degrees=True)
-R_right_target = R.from_euler('z', 90, degrees=True)
+R_left_target = R.from_euler('zy', [90, 90], degrees=True)
+R_right_target = R.from_euler('z', 0, degrees=True)
 
 arm_joints = {
     'left_shoulder_yaw_link': ('LeftArm', R_left_target),
