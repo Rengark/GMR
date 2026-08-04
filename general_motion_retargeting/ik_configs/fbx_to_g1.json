@@ -14,12 +14,12 @@
         "RightLeg": 0.9,
         "LeftToeBase": 0.9,
         "RightToeBase": 0.9,
-        "LeftArm": 0.45,
-        "RightArm": 0.45,
-        "LeftForeArm": 0.45,
-        "RightForeArm": 0.45,
-        "LeftHand": 0.45,
-        "RightHand": 0.45
+        "LeftArm": 0.1,
+        "RightArm": 0.1,
+        "LeftForeArm": 0.1,
+        "RightForeArm": 0.1,
+        "LeftHand": 0.1,
+        "RightHand": 0.1
     },
     "ik_match_table1": {
         "pelvis": [
@@ -378,8 +378,8 @@
         ],
         "left_shoulder_yaw_link": [
             "LeftArm",
+            0,
             10,
-            5,
             [
                 0.0,
                 0.0,
@@ -394,8 +394,8 @@
         ],
         "left_elbow_link": [
             "LeftForeArm",
+            0,
             10,
-            5,
             [
                 0.0,
                 0.0,
@@ -410,8 +410,8 @@
         ],
         "left_wrist_yaw_link": [
             "LeftHand",
+            0,
             10,
-            5,
             [
                 0.0,
                 0.0,
@@ -426,8 +426,8 @@
         ],
         "right_shoulder_yaw_link": [
             "RightArm",
+            0,
             10,
-            5,
             [
                 0.0,
                 0.0,
@@ -442,8 +442,8 @@
         ],
         "right_elbow_link": [
             "RightForeArm",
+            0,
             10,
-            5,
             [
                 0.0,
                 0.0,
@@ -458,8 +458,8 @@
         ],
         "right_wrist_yaw_link": [
             "RightHand",
+            0,
             10,
-            5,
             [
                 0.0,
                 0.0,
